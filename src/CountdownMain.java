@@ -6,8 +6,8 @@ public class CountdownMain
         Runnable r = () ->{
            CD.printCount();
         };
-        Thread one = new Thread(r,"One");
-        Thread two = new Thread(r,"Two");
+        Thread one = new Thread(r,"Synced One");
+        Thread two = new Thread(r,"Synced Two");
         one.start();
         two.start();
     }
@@ -20,8 +20,8 @@ public class CountdownMain
 class Countdown{
     public void printCount(){
          for(int i =10; i>=0; i--){
-             System.out.println(i+"!");
+             System.out.println(Thread.currentThread().getName() +": "+ i+"!");
          }
-        System.out.println( "reached the end, GO!");
+        System.out.println( Thread.currentThread().getName() +  " reached the end, GO!");
     }
 }
